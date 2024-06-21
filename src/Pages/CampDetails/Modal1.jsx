@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 // import { AuthContext } from "../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 // import axios from "axios";
@@ -7,6 +7,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 // import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Modal1 = ({ camp }) => {
@@ -22,8 +23,10 @@ const Modal1 = ({ camp }) => {
     // const {
     //     _id, job_banner, job_title, employer_name, employer_email, job_category, job_description, min_salary, max_salary, job_posting_date, application_deadline, job_applicants_number
     // } = job;
+    const modalRef = useRef(null);
 
     const handleAppliedJobs = e => {
+
         e.preventDefault()
 
         const form = new FormData(e.currentTarget);
@@ -74,7 +77,13 @@ const Modal1 = ({ camp }) => {
             // console.log(data)
         },
         onSuccess: () => {
-            toast.success('data incremented successfully')
+            // toast.success('data incremented successfully')
+            modalRef.current.close();
+            Swal.fire({
+                title: "You have Successfully Joined the camp!",
+                text: "Go to Dashboard and make payment to complete registration",
+                icon: "success"
+              });
         }
     })
 
@@ -82,8 +91,8 @@ const Modal1 = ({ camp }) => {
     return (
         <div>
             {/* You can open the modal using document.getElementById('ID').showModal() method */}
-            <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>Join Camp</button>
-            <dialog id="my_modal_4" className="modal ">
+            <button className="btn btn-success btn-outline w-full" onClick={() => modalRef.current.showModal()}>Join Camp</button>
+            <dialog id="my_modal_4" className="modal " ref={modalRef}>
                 <div className="modal-box w-11/12 max-w-5xl">
 
                     {/* form */}
@@ -137,7 +146,7 @@ const Modal1 = ({ camp }) => {
                                         <input name='participant_emergencyContact' required type="tel" className="w-full p-2 border rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"></input>
                                     </div>
                                     <div className="col-span-full">
-                                        <input type="submit" className="btn btn-success" value="Confirm & Join Camp" />
+                                        <input type="submit" className="btn btn-success btn-outline w-full" value="Confirm & Join Camp" />
                                     </div>
 
                                 </div>
