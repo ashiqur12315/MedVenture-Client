@@ -18,6 +18,9 @@ const UpdateCamp = () => {
     const axiosSecure = useAxiosSecure()
 
     const [startDate, setStartDate] = useState(new Date());
+    console.log(startDate.toString())
+    console.log(startDate)
+    
 
     const onSubmit = async (data) => {
         console.log(data)
@@ -33,7 +36,7 @@ const UpdateCamp = () => {
             const updatedCampDetails = {
                 name: data.name,
                 fees: parseFloat(data.fees),
-                dateTime: startDate,
+                dateTime: startDate.toString(),
                 location: data.location,
                 healthcareProfessional: data.healthcareProfessional,
                 participantCount: parseInt(data.participantCount),
