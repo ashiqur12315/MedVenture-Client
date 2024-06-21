@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CampCard = ({ camp }) => {
 	return (
 		<div key={camp._id} className="card card-compact w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                    <figure><img src={camp?.image} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{camp.name}</h2>
                         <p>Fees : {camp.fees}</p>

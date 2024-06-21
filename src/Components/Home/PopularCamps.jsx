@@ -8,7 +8,7 @@ const PopularCamps = () => {
         <div className='grid grid-cols-3 gap-6'>
             {loading ? <span className="loading loading-spinner text-info w-40"></span> :
                 sortedCamps.slice(0, 6).map(camp => <div key={camp._id} className="card card-compact w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                    <figure><img src={sortedCamps?.image} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{camp.name}</h2>
                         <p>Fees : {camp.fees}</p>

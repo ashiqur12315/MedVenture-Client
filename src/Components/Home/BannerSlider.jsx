@@ -20,7 +20,7 @@ export default function App() {
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={'5'}
+        slidesPerView={'4'}
         autoplay={{
             delay: 1500,
             disableOnInteraction: false,
