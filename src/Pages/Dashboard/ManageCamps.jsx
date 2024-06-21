@@ -4,6 +4,7 @@ import UpdateCamp from "./UpdateCamp";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import SectionTitle from "../../Components/Shared/SectionTitle";
 
 
 const ManageCamps = () => {
@@ -39,7 +40,7 @@ const ManageCamps = () => {
                             refetch()
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your camp has been deleted successfully.",
                                 icon: "success"
                             });
                         }
@@ -50,7 +51,7 @@ const ManageCamps = () => {
     }
     return (
         <div>
-            <h2>This is the manage Camps page {allCampsData.length}</h2>
+            <SectionTitle heading='Manage All Your Medical Camps'></SectionTitle>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

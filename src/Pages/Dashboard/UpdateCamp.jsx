@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -13,13 +14,14 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const UpdateCamp = () => {
     const { _id, name, fees, dateTime, location, healthcareProfessional, description } = useLoaderData()
     console.log(name, fees)
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
 
     const [startDate, setStartDate] = useState(new Date());
-    console.log(startDate.toString())
-    console.log(startDate)
+    const navigate = useNavigate()
+    // console.log(startDate.toString())
+    // console.log(startDate)
     
 
     const onSubmit = async (data) => {
@@ -47,8 +49,17 @@ const UpdateCamp = () => {
             const campRes = await axiosSecure.patch(`/updateCampDetails/${_id}`, updatedCampDetails);
             // console.log(profileRes.data)
             if (campRes.data.modifiedCount > 0) {
-                // refetch()
-                alert('Your Camp details has been Updated')
+
+                navigate('/dashboard/manageCamps')
+                
+                reset()
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your Medical Camp has been Updated Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
             }
 
         }
