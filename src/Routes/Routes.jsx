@@ -17,11 +17,15 @@ import Analytics from "../Pages/Dashboard/Analytics";
 import RegisteredCamps from "../Pages/Dashboard/RegisteredCamps";
 import Payment from "../Pages/Dashboard/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import ErrorPage from "../Components/Shared/ErrorPage";
 
  export const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
             path: '/',
@@ -37,7 +41,7 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
         },
         {
           path: '/campData/:id',
-          element: <CampDetails></CampDetails>,
+          element: <CampDetails></CampDetails>
 
         },
         {
@@ -48,20 +52,21 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
     },
     {
       path: 'dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         // Admin Routes
         {
           index: 'true',
-          element: <OrganizerProfile></OrganizerProfile>
+          element: <PrivateRoute><OrganizerProfile></OrganizerProfile></PrivateRoute>
         },
         {
           path: 'addACamp',
-          element: <AddACamp></AddACamp>
+          element: <AdminRoute><AddACamp></AddACamp></AdminRoute>
         },
         {
           path: 'manageCamps',
-          element: <ManageCamps></ManageCamps>
+          element: <AdminRoute><ManageCamps></ManageCamps></AdminRoute>
         },
         {
           path: 'updateCamp/:id',
@@ -70,26 +75,26 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
         },
         {
           path: 'manageRegisteredCamps',
-          element: <ManageRegisteredCamps></ManageRegisteredCamps>
+          element: <AdminRoute><ManageRegisteredCamps></ManageRegisteredCamps></AdminRoute>
         },
 
         // Participant routes
         
         {
           path: 'analytics',
-          element: <Analytics></Analytics>
+          element: <PrivateRoute><Analytics></Analytics></PrivateRoute>
         },
         {
           path: 'registeredCamps',
-          element: <RegisteredCamps></RegisteredCamps>
+          element: <PrivateRoute><RegisteredCamps></RegisteredCamps></PrivateRoute>
         },
         {
           path: 'payment/:id',
-          element: <Payment></Payment>
+          element: <PrivateRoute><Payment></Payment></PrivateRoute>
         },
         {
           path: 'paymentHistory',
-          element: <PaymentHistory></PaymentHistory>
+          element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
         }
       ]
     }
