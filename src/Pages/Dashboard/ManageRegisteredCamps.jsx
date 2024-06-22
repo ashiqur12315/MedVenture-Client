@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import SectionTitle from "../../Components/Shared/SectionTitle";
 
 
 const ManageRegisteredCamps = () => {
@@ -51,7 +52,7 @@ const ManageRegisteredCamps = () => {
     }
     return (
         <div>
-            <h2>This is the registered camps: {allParticipants.length}</h2>
+            <SectionTitle heading='Manage All Users Registered Camps'></SectionTitle>
             {
                 loading ? <span className="loading loading-spinner text-info"></span>
                     :
