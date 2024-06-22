@@ -3,6 +3,8 @@ import BannerSlider from "../../Components/Home/BannerSlider"
 import PopularCamps from "../../Components/Home/PopularCamps";
 import SectionTitle from "../../Components/Shared/SectionTitle";
 import HomeFeedback from "./HomeFeedback";
+import Sub from "./Sub";
+import Subscribe from "./Subscribe";
 
 
 
@@ -20,6 +22,9 @@ const Home = () => {
                 <div className="container mx-auto text-center"><Link className="m-6 btn mx-auto btn-info" to='/availableCamps'>See All Camps</Link></div>
                 <div><HomeFeedback></HomeFeedback></div>
             </div>
+            <Sub></Sub>
+            <Subscribe></Subscribe>
+            
         </div>
     );
 };
