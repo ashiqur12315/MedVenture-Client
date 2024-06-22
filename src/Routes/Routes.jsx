@@ -16,6 +16,7 @@ import ManageRegisteredCamps from "../Pages/Dashboard/ManageRegisteredCamps";
 import Analytics from "../Pages/Dashboard/Analytics";
 import RegisteredCamps from "../Pages/Dashboard/RegisteredCamps";
 import Payment from "../Pages/Dashboard/Payment";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 
  export const router = createBrowserRouter([
     {
@@ -65,7 +66,7 @@ import Payment from "../Pages/Dashboard/Payment";
         {
           path: 'updateCamp/:id',
           element: <UpdateCamp></UpdateCamp>,
-          loader: ({params})=> fetch(`https://medventure-server.vercel.app/campData/${params.id}`)
+          loader: ({params})=> fetch(`http://localhost:9000/campData/${params.id}`)
         },
         {
           path: 'manageRegisteredCamps',
@@ -85,6 +86,10 @@ import Payment from "../Pages/Dashboard/Payment";
         {
           path: 'payment/:id',
           element: <Payment></Payment>
+        },
+        {
+          path: 'paymentHistory',
+          element: <PaymentHistory></PaymentHistory>
         }
       ]
     }

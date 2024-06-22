@@ -12,7 +12,7 @@ import 'swiper/css/pagination';
 import '../../Pages/../Components/Home/styles.css'
 
 // import required modules
-import {Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
 import ReviewCard from '../../Components/Shared/ReviewCard';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
@@ -20,16 +20,16 @@ import { useQuery } from '@tanstack/react-query';
 const HomeFeedback = () => {
     const axiosPublic = useAxiosPublic()
 
-    const {data: review = []} = useQuery({
+    const { data: review = [] } = useQuery({
         queryKey: ['review'],
-        queryFn: async()=>{
-            const res =await axiosPublic.get('/feedback')
+        queryFn: async () => {
+            const res = await axiosPublic.get('/feedback')
             return res.data
         }
     })
-    console.log(review)
+    // console.log(review)
 
-    
+
     return (
         <div>
             <>
@@ -51,12 +51,13 @@ const HomeFeedback = () => {
                     }}
                     pagination={true}
                     modules={[Autoplay, EffectCoverflow, Pagination]}
-                    className="mySwiper  bg-contain bg-[url('/s1.jpg')]"
+                    // className="mySwiper  bg-contain bg-[url('/s1.jpg')]"
+                    className="mySwiper  ]"
                 >
-                    <SwiperSlide>
-                        <ReviewCard></ReviewCard>
-                    </SwiperSlide>
-                    
+                    {review.map(r => <SwiperSlide className='border-2 border-blue-200' key={r._id}>
+                        <ReviewCard r={r}></ReviewCard>
+                    </SwiperSlide>)}
+
 
 
                 </Swiper>

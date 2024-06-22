@@ -24,7 +24,7 @@ const Dashboard = () => {
                             <li><NavLink to='/dashboard'>Participant Profile</NavLink></li>                            
                             <li><NavLink to='analytics'>Analytics</NavLink></li>
                             <li><NavLink to='registeredCamps'>Registered Camps</NavLink></li>
-                            <li><NavLink to='/paymentHistory'>Payment History</NavLink></li>
+                            <li><NavLink to='paymentHistory'>Payment History</NavLink></li>
                             <div className="divider"></div>
                             <li><NavLink to='/'>Home</NavLink></li>
                         </>

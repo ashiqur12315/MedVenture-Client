@@ -32,6 +32,7 @@ const FeedbackRating = () => {
         const feedback = {
             name: user.displayName,
             email: user.email,
+            image: user.photoURL,
             feedback: data.name,
             rating: data.rating
         }
