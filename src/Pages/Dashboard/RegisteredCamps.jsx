@@ -3,6 +3,8 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import SectionTitle from "../../Components/Shared/SectionTitle";
+import FeedbackRating from "./FeedbackRating";
 
 
 const RegisteredCamps = () => {
@@ -47,7 +49,7 @@ const RegisteredCamps = () => {
     }
     return (
         <div>
-            <h2>This is the registered camps: {registeredCamps.length}</h2>
+            <SectionTitle heading='All Registered Camps'></SectionTitle>
             {
                 loading ? <span className="loading loading-spinner text-info"></span>
                     :
@@ -77,10 +79,14 @@ const RegisteredCamps = () => {
                                                     <button className="btn btn-success">Pay</button>
                                                 </Link>}
                                             </td>
-                                            <td>{p.confirmation_status}</td>
+                                            <td>{p.confirmation_status? p.confirmation_status : 'Pending'}</td>
                                             <td>{
                                                 p.payment_status ? <button disabled className="btn btn-warning">Cancel</button> :
                                                     <button onClick={() => handleCancel(p._id)} className="btn btn-warning">Cancel</button>
+                                            }</td>
+                                            <td>{
+                                                p.confirmation_status ? <FeedbackRating></FeedbackRating> :
+                                                <button disabled className="btn btn-warning">Feedback</button>
                                             }</td>
 
                                         </tr>)

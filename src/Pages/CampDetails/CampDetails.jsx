@@ -2,11 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Modal1 from "./Modal1";
+import useAuth from "../../Hooks/useAuth";
 
 
 const CampDetails = () => {
     const { id } = useParams();
     const axiosPublic = useAxiosPublic();
+    const { user } = useAuth()
 
     const { data: campData = [] } = useQuery({
         queryKey: ['campData'],
@@ -18,7 +20,7 @@ const CampDetails = () => {
     })
     // console.log(campData)
     // console.log(typeof(campData))
-    const dateTime = campData.dateTime
+    // const dateTime = campData.dateTime
 
     return (
         <section className="bg-white dark:bg-gray-900">
@@ -43,7 +45,7 @@ const CampDetails = () => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <p className="text-gray-600 dark:text-gray-300"><span className="font-bold">Camp Fees:</span> ${campData.fees}</p>
-                                    <p className="text-gray-600 dark:text-gray-300 mt-2"><span className="font-bold">Date and Time:</span> {dateTime.slice(0,21)}</p>
+                                    <p className="text-gray-600 dark:text-gray-300 mt-2"><span className="font-bold">Date and Time:</span> {campData.dateTime}</p>
                                     <p className="text-gray-600 dark:text-gray-300 mt-2"><span className="font-bold">Location:</span> {campData.location}</p>
                                 </div>
                                 <div>
@@ -54,21 +56,10 @@ const CampDetails = () => {
                             <p className="text-gray-600 dark:text-gray-300 mt-4"><span className="font-bold">Description:</span> {campData.description}</p>
                         </div>
 
-                        <div className=" text-center my-10">
+                        <div className={`${user? '' : 'hidden'} text-center my-10`}>
                             <Modal1 camp={campData}></Modal1>
                         </div>
-                        <div>
-                            {/* {
-                                isSameEmail ? <h2 className="text-red-400 bg-red-100 p-1 rounded-md my-4">You can not apply on your own posted job.</h2> : ''
-                            }
-                           { isDeadlinePassed ? <h2 className="text-red-400 bg-red-100 p-1 rounded-md my-4">Sorry, The job application deadline is over.</h2> : ''}
-                            <button disabled={isSameEmail || isDeadlinePassed} className="btn btn-accent">
-                                {
-                                    isSameEmail || isDeadlinePassed ?  "Apply" : <Modal1 job={job}></Modal1> 
-                                }
-                            </button>
-                            <Modal1 disabled={isSameEmail || isDeadlinePassed} className='btn' job={job}></Modal1> */}
-                        </div>
+
                     </div>
                 </div>
             </div>

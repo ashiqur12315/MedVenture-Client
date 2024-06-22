@@ -2,6 +2,8 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 // import { useQuery } from '@tanstack/react-query';
 // import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
@@ -15,6 +17,7 @@ const CheckOutForm = ({ paymentCampData }) => {
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxiosSecure()
+    const navigate = useNavigate()
 
     // const campFee = 75;
     // console.log(paymentCamp,campFee)
@@ -82,7 +85,14 @@ const CheckOutForm = ({ paymentCampData }) => {
             if(res.data.insertedId){
                 const res = await axiosSecure.patch(`/paymentStatus/${paymentCampData._id}`, payment)
                 if(res.data.modifiedCount > 0){
-                    alert('payment history saved and updated payment status')
+                    // alert('payment history saved and updated payment status')
+                    navigate('/dashboard/registeredCamps')
+                    Swal.fire({
+                        title: "Payment Successful",
+                        text: `Your Transaction Id: ${payment.transactionId}`,
+                        icon: "success"
+                      });
+                      
                 }
             }
         }
