@@ -71,7 +71,7 @@ import ErrorPage from "../Components/Shared/ErrorPage";
         {
           path: 'updateCamp/:id',
           element: <UpdateCamp></UpdateCamp>,
-          loader: ({params})=> fetch(`http://localhost:9000/campData/${params.id}`)
+          loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/campData/${params.id}`)
         },
         {
           path: 'manageRegisteredCamps',

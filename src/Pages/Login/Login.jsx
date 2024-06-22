@@ -59,15 +59,6 @@ const Login = () => {
         })
         .catch(error => toast.error('Unable to sign in with Google', { duration: 4000 }))
     }
-    // const handleSignInWithGithub = () =>{
-    //     signInWithGithub()
-    //     .then(result => {
-    //         // console.log(result.user)
-    //         toast.success('You have Successfully Signed In with Github', { duration: 4000 });
-    //         navigate(location?.state ? location.state : '/')
-    //     })
-    //     .catch(error => toast.error('Unable to sign in with Github', { duration: 4000 }))
-    // }
     return (
         <div>
             {/* <Helmet><title>Login</title></Helmet> */}
