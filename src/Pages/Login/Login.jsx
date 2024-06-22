@@ -97,6 +97,7 @@ const Login = () => {
                 </form>
 
                 {/* ____________Sign in with social account______________ */}
+                <div className="divider divider-info">Info</div>
 
                 <div data-aos="fade-up" data-aos-duration="2000"
                     className="flex items-center pt-4 space-x-1">
