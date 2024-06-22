@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CampCard = ({ camp }) => {
 	return (
-		<div key={camp._id} className="card card-compact w-96 bg-base-100 shadow-xl">
+		<div key={camp._id} className="card card-compact max-w-96 bg-base-100 shadow-xl">
                     <figure><img className="object-cover object-center border w-full h-80" src={camp?.image} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{camp.name}</h2>

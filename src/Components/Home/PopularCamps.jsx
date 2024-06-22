@@ -5,9 +5,9 @@ const PopularCamps = () => {
     const [camps, loading, refetch] = useCamps()
     const sortedCamps = camps.sort((a, b) => b.participantCount - a.participantCount);
     return (
-        <div className='grid grid-cols-3 gap-6'>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 p-4 gap-6 '>
             {loading ? <span className="loading loading-spinner text-info w-40"></span> :
-                sortedCamps.slice(0, 6).map(camp => <div key={camp._id} className="card card-compact w-96 bg-base-100 shadow-xl">
+                sortedCamps.slice(0, 6).map(camp => <div key={camp._id} className="card card-compact max-w-96 bg-base-100 shadow-xl">
                     <figure ><img className='object-cover object-center border w-full h-80' src={camp?.image} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">{camp.name}</h2>

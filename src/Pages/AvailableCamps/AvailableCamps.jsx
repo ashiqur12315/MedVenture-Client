@@ -86,12 +86,12 @@ const AvailableCamps = () => {
 
 			<main>
 				{/* <PageHeader title="Available Camps" /> */}
-				<div className="flex items-center  justify-center p-5">
+				<div className="lg:flex md:flex items-center  justify-center p-5">
 					<form onSubmit={handleSearch}>
 						<input
 							type="text"
 							placeholder="Search..."
-							className="border border-gray-300 rounded-l px-4 py-2 focus:outline-none focus:ring focus:border-blue-400"
+							className=" border border-gray-300 rounded-l px-4 py-2 focus:outline-none focus:ring focus:border-blue-400"
 							name="search"
 
 						/>
@@ -103,7 +103,7 @@ const AvailableCamps = () => {
 						</button>
 					</form>
 
-					<div className="m-4">
+					<div className="lg:m-4 md:m-4 my-2">
 						<button className="btn" onClick={() => setTwoColumn(!twoColumn)}>
 							Toggle Layout
 						</button>
@@ -169,7 +169,7 @@ const AvailableCamps = () => {
 
 				{/* My  */}
 
-				<div>
+				<div className="px-4">
 					{
 						search.length > 0 ?
 							<>
@@ -186,7 +186,7 @@ const AvailableCamps = () => {
 							</>
 							:
 							<>
-								<div className={`grid grid-cols-1 md:grid-cols-2 ${twoColumn ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}  gap-6`}>
+								<div className={`grid grid-cols-1 md:grid-cols-2 ${twoColumn ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}  gap-6  `}>
 									{allCampsData.map((camp) => (
 										<CampCard key={camp._id} camp={camp} />
 									))}
