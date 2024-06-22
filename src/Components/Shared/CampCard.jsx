@@ -12,9 +12,10 @@ const CampCard = ({ camp }) => {
                         <p>Location : {camp.location}</p>
                         <p>Healthcare Professional : {camp.healthcareProfessional}</p>
                         <p>Participants : {camp.participantCount}</p>
-                        <div className="card-actions justify-end">
+                        <p>Description : {camp.description.slice(0,40)}...</p>
+                        <div className=" justify-center">
                             <Link to={`/campData/${camp._id}`}>
-                                <button className="btn btn-primary">Camp Details</button>
+                                <button className="btn btn-info btn-outline w-full">Camp Details</button>
                             </Link>
                         </div>
                     </div>

@@ -42,7 +42,7 @@ const CampDetails = () => {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <p className="text-gray-600 dark:text-gray-300"><span className="font-bold">Camp Fees:</span> ${campData.fees}</p>
-                                    <p className="text-gray-600 dark:text-gray-300 mt-2"><span className="font-bold">Date and Time:</span> {campData.dateTime.slice(0,21)}</p>
+                                    <p className="text-gray-600 dark:text-gray-300 mt-2"><span className="font-bold">Date and Time:</span> {campData.dateTime}.slice(0,21)</p>
                                     <p className="text-gray-600 dark:text-gray-300 mt-2"><span className="font-bold">Location:</span> {campData.location}</p>
                                 </div>
                                 <div>

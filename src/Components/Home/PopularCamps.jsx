@@ -16,9 +16,9 @@ const PopularCamps = () => {
                         <p>Location : {camp.location}</p>
                         <p>Healthcare Professional : {camp.healthcareProfessional}</p>
                         <p>Participants : {camp.participantCount}</p>
-                        <div className="card-actions justify-end">
+                        <div className=" justify-center">
                             <Link to={`/campData/${camp._id}`}>
-                                <button className="btn btn-primary">Camp Details</button>
+                                <button className="btn btn-info btn-outline w-full">Camp Details</button>
                             </Link>
                         </div>
                     </div>

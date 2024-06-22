@@ -65,7 +65,7 @@ import Payment from "../Pages/Dashboard/Payment";
         {
           path: 'updateCamp/:id',
           element: <UpdateCamp></UpdateCamp>,
-          loader: ({params})=> fetch(`http://localhost:9000/campData/${params.id}`)
+          loader: ({params})=> fetch(`https://medventure-server.vercel.app/campData/${params.id}`)
         },
         {
           path: 'manageRegisteredCamps',
